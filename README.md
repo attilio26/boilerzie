@@ -1,3 +1,3 @@
-# boilerzie
-RS485 bus Id5
-Stazione 5 pilota generatore acqua calda, bruciatore termoconvettori.  Sensore: DS18B20
+# Telegram Echo Bot
+
+This is a sample Telegram Bot written in PHP running on Heroku

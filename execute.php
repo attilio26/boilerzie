@@ -1,5 +1,5 @@
 <?php
-//30-03-2018
+//11-07-2018
 //started on 20-09-2017
 // La app di Heroku si puo richiamare da browser con
 //			https://caldaiazie.herokuapp.com/
@@ -91,7 +91,7 @@ else
 $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof"],["/bof_won", "/off_off"],["/caldaia","/verbose"]], "one_time_keyboard": false}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof"],["/bof_won", "/off_off"],["/caldaia","/verbose"]], "resize_keyboard": true, "one_time_keyboard": false}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

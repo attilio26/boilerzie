@@ -62,9 +62,6 @@ elseif($text=="/on_on"){
 elseif(strpos($text,"bon_wof")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/2");
 }
-elseif($text=="/bof_won"){
-	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/1");
-}
 elseif($text=="/off_off"){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
@@ -93,7 +90,7 @@ $parameters["method"] = "sendMessage";
 // Gli EMOTICON sono a:     http://www.charbase.com/block/miscellaneous-symbols-and-pictographs
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25"],["/bof_won", "/off_off"],["/caldaia","/verbose"]], "one_time_keyboard": false}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off"],["/caldaia","/verbose"]], "one_time_keyboard": false}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

@@ -62,7 +62,8 @@ elseif($text=="/on_on"){
 elseif(strpos($text,"bon_wof")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/2");
 }
-elseif(strpos($text,"/off_off")){
+//elseif(strpos($text,"/off_off")){
+elseif(strpos($text,"\ud83d\udd35")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
 //<-- Lettura parametri slave5

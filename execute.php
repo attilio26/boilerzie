@@ -62,8 +62,7 @@ elseif($text=="/on_on"){
 elseif(strpos($text,"bon_wof")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/2");
 }
-//elseif(strpos($text,"/off_off")){
-elseif(strpos($text,"\ud83d\udd35")){
+elseif(strpos($text,".")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
 //<-- Lettura parametri slave5
@@ -92,7 +91,7 @@ $parameters["method"] = "sendMessage";
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 //													https://apps.timwhitlock.info/emoji/tables/unicode
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia","/verbose"]], "one_time_keyboard": false, "resize_keyboard": true}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25",". \ud83d\udd35"],["/caldaia","/verbose"]], "one_time_keyboard": false, "resize_keyboard": true}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

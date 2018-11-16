@@ -1,5 +1,5 @@
 <?php
-//12-09-2018
+//16-11-2018
 //started on 20-09-2017
 // La app di Heroku si puo richiamare da browser con
 //			https://caldaiazie.herokuapp.com/
@@ -62,7 +62,7 @@ elseif($text=="/on_on"){
 elseif(strpos($text,"bon_wof")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/2");
 }
-elseif($text=="/off_off"){
+elseif((strpos($text=="/off_off")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
 //<-- Lettura parametri slave5
@@ -89,8 +89,9 @@ $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
 // Gli EMOTICON sono a:     http://www.charbase.com/block/miscellaneous-symbols-and-pictographs
 //													https://unicode.org/emoji/charts/full-emoji-list.html
+//													https://apps.timwhitlock.info/emoji/tables/unicode
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off"],["/caldaia","/verbose"]], "one_time_keyboard": false, "resize_keyboard": true}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia","/verbose"]], "one_time_keyboard": false, "resize_keyboard": true}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

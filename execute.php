@@ -91,7 +91,7 @@ $parameters["method"] = "sendMessage";
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 //													https://apps.timwhitlock.info/emoji/tables/unicode
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia","/verbose"]], "one_time_keyboard": false, "resize_keyboard": true}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia"]], "one_time_keyboard": false, "resize_keyboard": true}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

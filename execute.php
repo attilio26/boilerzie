@@ -1,5 +1,5 @@
 <?php
-//16-11-2018
+//27-12-2018
 //started on 20-09-2017
 // La app di Heroku si puo richiamare da browser con
 //			https://caldaiazie.herokuapp.com/
@@ -66,7 +66,7 @@ elseif(strpos($text,"off_off")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
 //<-- Lettura parametri slave5
-elseif($text=="/caldaia"){
+elseif(strpos($text,"caldaia")){
 	$response = file_get_contents("http://dario95.ddns.net:8083/caldaia");
 }
 
@@ -91,7 +91,7 @@ $parameters["method"] = "sendMessage";
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 //													https://apps.timwhitlock.info/emoji/tables/unicode
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/on_on \ud83d\udd34", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia"]], "one_time_keyboard": false, "resize_keyboard": true}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on \ud83d\udd34", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia \u2753"]], "one_time_keyboard": false, "resize_keyboard": true}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

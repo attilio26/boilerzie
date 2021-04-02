@@ -64,7 +64,7 @@ function clean_html_page($str_in){
 //elimino i caratteri della pagina che non interessano la stazione bedzie
 	$startch = strpos($str_in,"slave5");
 	$endch = strpos($str_in,"slave4");	
-	$str_in = substr($str_in,$startch,($endch - $startch));
+	//$str_in = substr($str_in,$startch,($endch - $startch));
 	return $str_in;
 }
 

@@ -64,7 +64,7 @@ function clean_html_page($str_in){
 //elimino i caratteri della pagina che non interessano la stazione bedzie
 	$startch = strpos($str_in,"slave5");
 	$endch = strpos($str_in,"slave4");	
-	//$str_in = substr($str_in,$startch,($endch - $startch));
+	$str_in = substr($str_in,$startch,($endch - $startch));
 	return $str_in;
 }
 
@@ -91,29 +91,26 @@ $response = '';
 
 if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 	$response = "Ciao $firstname, benvenuto! \n List of commands : 
-	/boil_on  -> boiler ON   
-	/boil_off -> boiler OFF     
-	/warm_on  -> warm ON  
-	/warm_off -> warm OFF   
+	/on_on -> boiler ON  warm ON
+	/bon_wof -> boiler ON   warm OFF  
+	/bof_won -> boiler OFF  warm ON (useless)
+	/off_off -> boiler OFF  warm OFF 
 	/caldaia  -> Lettura stazione5 ... su bus RS485  \n/verbose -> parametri del messaggio";
 }
 
 //<-- Comandi ai rele
-elseif(strpos($text,"boil_on")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=a");
+elseif(strpos($text,"on_on")){
+	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/3");
 }
-elseif(strpos($text,"bon_off")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=b");
+elseif(strpos($text,"bon_wof")){
+	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/2");
 }
-elseif(strpos($text,"warm_on")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=8");
-}
-elseif(strpos($text,"warm_off")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=9");
+elseif(strpos($text,"off_off")){
+	$response = file_get_contents("http://dario95.ddns.net:8083/rele/5/0");
 }
 //<-- Lettura parametri slave5
 elseif(strpos($text,"caldaia")){
-	$response = file_get_contents("http://dario95.ddns.net:8083");
+	$response = file_get_contents("http://dario95.ddns.net:8083/caldaia");
 }
 
 //<-- Manda a video la risposta completa
@@ -129,7 +126,7 @@ else
 }
 
 // la mia risposta è un array JSON composto da chat_id, text, method
-// chat_id mi consente di rispondere allo specifico utente che ha scritto al bot     \ud83d\udd25
+// chat_id mi consente di rispondere allo specifico utente che ha scritto al bot
 // text è il testo della risposta
 $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
@@ -137,7 +134,7 @@ $parameters["method"] = "sendMessage";
 //													https://unicode.org/emoji/charts/full-emoji-list.html
 //													https://apps.timwhitlock.info/emoji/tables/unicode
 // imposto la keyboard
-$parameters["reply_markup"] = '{ "keyboard": [["/boil_on \ud83d\udd34", "/boil_off \ud83d\udd35"],["/warm_on \ud83d\udd25", "/warm_off \ud83d\udd35"]["/caldaia \u2753"]], "one_time_keyboard": false, "resize_keyboard": true}';
+$parameters["reply_markup"] = '{ "keyboard": [["/on_on \ud83d\udd34", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],["/caldaia \u2753"]], "one_time_keyboard": false, "resize_keyboard": true}';
 // converto e stampo l'array JSON sulla response
 echo json_encode($parameters);
 ?>

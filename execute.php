@@ -100,20 +100,25 @@ if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 
 //<-- Comandi ai rele
 elseif(strpos($text,"boil_on")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=a");
+	$resp = file_get_contents("http://dario95.ddns.net:8083/?a=a");
+	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"boil_off")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=b");
+	$resp = file_get_contents("http://dario95.ddns.net:8083/?a=b");
+	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"warm_on")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=8");
+	$resp = file_get_contents("http://dario95.ddns.net:8083/?a=8");
+	$response = clean_html_page($resp);
 }
 elseif(strpos($text,"warm_off")){
-	$response = file_get_contents("http://dario95.ddns.net:8083/?a=9");
+	$resp = file_get_contents("http://dario95.ddns.net:8083/?a=9");
+	$response = clean_html_page($resp);
 }
 //<-- Lettura parametri slave5
 elseif(strpos($text,"caldaia")){
-	$response = file_get_contents("http://dario95.ddns.net:8083");
+	$resp = file_get_contents("http://dario95.ddns.net:8083");
+	$response = clean_html_page($resp);
 }
 
 //<-- Manda a video la risposta completa

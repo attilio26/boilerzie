@@ -1,9 +1,11 @@
 <?php
-//27-12-2018
+//02-04-2021
 //started on 20-09-2017
 // La app di Heroku si puo richiamare da browser con
 //			https://caldaiazie.herokuapp.com/
-
+// Account Heroku:  attiliomelucci@gmail.com   	pwd:  bg142666
+// Account GitHub:	attiliomelucci@libero.it 		pwd:  Bg142666    name: attilio26
+// @caldaiazie_bot
 
 /*API key = 400485064:AAFsbr6qF-jge30dSqTFhctKwL2GGFSoJaA
 
@@ -26,6 +28,47 @@ if(!$update)
 {
   exit;
 }
+
+function clean_html_page($str_in){
+//elimino i caratteri html dalla pagina del wemos casa zie
+	$startch = strpos($str_in,"Uptime:") + 43 ;							//primo carattere utile da estrarre
+	$endch = strpos($str_in,"Tds1");					//ultimo carattere utile da estrarre
+	$str_in = substr($str_in, $startch, ($endch - $startch));				// substr(string,start,length)
+	$str_in = str_replace("<a href='?a="," ",$str_in);
+	$str_in = str_replace("<br>"," ",$str_in);
+	$str_in = str_replace(" </a></h2><h2>"," ",$str_in);
+	$str_in = str_replace("</a>"," -- ",$str_in);
+	$str_in = str_replace("4'/>"," ",$str_in);
+	$str_in = str_replace("5'/>"," ",$str_in);
+	$str_in = str_replace("6'/>"," ",$str_in);
+	$str_in = str_replace("7'/>"," ",$str_in);	
+	$str_in = str_replace("8'/>"," ",$str_in);
+	$str_in = str_replace("9'/>"," ",$str_in);
+	$str_in = str_replace("a'/>"," ",$str_in);	
+	$str_in = str_replace("b'/>"," ",$str_in);	
+	$str_in = str_replace("c'/>"," ",$str_in);	
+	$str_in = str_replace("d'/>"," ",$str_in);	
+	$str_in = str_replace("e'/>"," ",$str_in);	
+	$str_in = str_replace("f'/>"," ",$str_in);	
+	$str_in = str_replace("g'/>"," ",$str_in);	
+	$str_in = str_replace("h'/>"," ",$str_in);	
+	$str_in = str_replace("i'/>"," ",$str_in);	
+	$str_in = str_replace("l'/>"," ",$str_in);	
+	$str_in = str_replace("k'/>"," ",$str_in);		
+	$str_in = str_replace("m'/>"," ",$str_in);	
+	$str_in = str_replace("n'/>"," ",$str_in);
+	$str_in = str_replace("o'/>"," ",$str_in);	
+	$str_in = str_replace("p'/>"," ",$str_in);
+	$str_in = str_replace("q'/>"," ",$str_in);
+	$str_in = str_replace("<h2>"," ",$str_in);	
+//elimino i caratteri della pagina che non interessano la stazione bedzie
+	$startch = strpos($str_in,"slave5");
+	$endch = strpos($str_in,"slave4");	
+	$str_in = substr($str_in,$startch,($endch - $startch));
+	return $str_in;
+}
+
+
 
 $message = isset($update['message']) ? $update['message'] : "";
 $messageId = isset($message['message_id']) ? $message['message_id'] : "";

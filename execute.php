@@ -129,7 +129,7 @@ else
 }
 
 // la mia risposta è un array JSON composto da chat_id, text, method
-// chat_id mi consente di rispondere allo specifico utente che ha scritto al bot
+// chat_id mi consente di rispondere allo specifico utente che ha scritto al bot     
 // text è il testo della risposta
 $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
@@ -139,7 +139,8 @@ $parameters["method"] = "sendMessage";
 // imposto la keyboard
 $parameters["reply_markup"] = '{ "keyboard": 
 	[
-		["/on_on \ud83d\udd34", "/bon_wof \ud83d\udd25","/off_off \ud83d\udd35"],
+		["/boil_on \ud83d\udd34", "/boil_off \ud83d\udd35"],
+		["/warm_on \ud83d\udd25", "/warm_off \ud83d\udd35"],
 		["/caldaia \u2753"]
 	], 
 		"one_time_keyboard": false, "resize_keyboard": true

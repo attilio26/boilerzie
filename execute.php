@@ -91,10 +91,10 @@ $response = '';
 
 if(strpos($text, "/start") === 0 || $text=="ciao" || $text == "help"){
 	$response = "Ciao $firstname, benvenuto! \n List of commands : 
-	/on_on -> boiler ON  warm ON
-	/bon_wof -> boiler ON   warm OFF  
-	/bof_won -> boiler OFF  warm ON (useless)
-	/off_off -> boiler OFF  warm OFF 
+	/boil_on  -> boiler ON   
+	/boil_off -> boiler OFF     
+	/warm_on  -> warm ON  
+	/warm_off -> warm OFF  
 	/caldaia  -> Lettura stazione5 ... su bus RS485  \n/verbose -> parametri del messaggio";
 }
 
